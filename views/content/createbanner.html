@@ -1,0 +1,66 @@
+<!-- <div class="breadcrumbs">
+  <ul>
+    <li>
+      <a title="Home">Company Setup</a>
+    </li>
+    <li>
+      <a ui-sref="branch-list" title="Branch List">Branch List</a>
+    </li>
+  </ul>
+</div> -->
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>Banner</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <form ng-submit="saveBanner();">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="form-group">
+                            <label>Banner Order</label>
+                            <input type="text" placeholder="Banner Order" class="form-control" ng-model="banner.order" only-digits>
+                        </div>
+                        <div class="form-group">
+                            <label>Banner Link</label>
+                            <input type="text" placeholder="Banner Link" class="form-control" ng-model="banner.link" >
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" ng-model="banner.status">
+                                <!-- <option value=""></option> -->
+                                <option value="true">Enabled</option>
+                                <option value="false">Disabled</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <div class="banner-img-holder" ng-if="banner.image">
+                                <img ng-src="{{banner.image|uploadpath}}" alt="" class="img-responsive margin-auto">
+                            </div>
+                            <upload-image ng-model="banner.image" no-view></upload-image>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit">Save</button>
+                            <button class="btn btn-default" ui-sref="banner">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
