@@ -44,6 +44,22 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'editBannerCtrl'
     })
+    .state('product', {
+        url: "/product",
+        templateUrl: "views/template.html",
+        controller: 'productCtrl'
+    })
+
+    .state('createproduct', {
+        url: "/createproduct",
+        templateUrl: "views/template.html",
+        controller: 'createProductCtrl'
+    })
+    .state('editproduct', {
+        url: "/editproduct/:id",
+        templateUrl: "views/template.html",
+        controller: 'editProductCtrl'
+    })
 
     .state('editschool', {
         url: "/editschool/:id",

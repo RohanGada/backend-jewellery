@@ -19,9 +19,9 @@ var navigationservice = angular.module('navigationservice', [])
         icon: "banner",
         subnav: []
     },{
-        name: "Schools",
+        name: "Products",
         classis: "active",
-        anchor: "school",
+        anchor: "product",
         icon: "building",
         subnav: []
     }
@@ -69,6 +69,38 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 data: {
                     _id: $.jStorage.get("deleteBanner")
+                }
+            }).success(callback);
+        },
+        getOneProduct: function(id, callback) {
+            $http({
+                url: adminURL + 'product/getOne',
+                method: 'POST',
+                data: {
+                    _id: id
+                }
+            }).success(callback);
+        },
+        saveProduct: function(formData, callback) {
+          console.log(formData);
+            $http({
+                url: adminURL + 'product/saveData',
+                method: 'POST',
+                data: formData
+            }).success(callback);
+        },
+        getAllProducts: function( callback) {
+            $http({
+                url: adminURL + 'product/getall',
+                method: 'POST'
+            }).success(callback);
+        },
+        deleteProduct: function(callback) {
+            $http({
+                url: adminURL + 'product/deleteData',
+                method: 'POST',
+                data: {
+                    _id: $.jStorage.get("deleteProduct")
                 }
             }).success(callback);
         },

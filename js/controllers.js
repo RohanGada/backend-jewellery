@@ -138,6 +138,99 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
     })
 
+    .controller('productCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("product");
+        $scope.menutitle = NavigationService.makeactive("Schools");
+        TemplateService.title = $scope.menutitle;
+        $scope.adminURL = adminURL;
+        $scope.navigation = NavigationService.getnav();
+        $scope.template.type = 1;
+        $scope.contentLoaded = false;
+        $scope.products = [];
+        $scope.pagination = {};
+        $scope.pagination.pagenumber = 1;
+
+        $scope.reload = function(val) {
+            NavigationService.getAllProducts(function(resp) {
+                if (resp.status) {
+                    $scope.contentLoaded = true;
+                    $scope.products = resp.response;
+                } else {
+                    $scope.products = [];
+                }
+            });
+        };
+        $scope.reload();
+
+        $scope.confDelete = function() {
+            NavigationService.deleteProduct(function(data, status) {
+                console.log(data);
+                $scope.reload();
+            });
+        };
+        $scope.deleteFunc = function(id) {
+            $.jStorage.set("deleteProduct", id);
+            $uibModal.open({
+                animation: true,
+                templateUrl: "views/content/delete.html",
+                scope: $scope
+            });
+        };
+    })
+    .controller('createProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("createproduct");
+        $scope.menutitle = NavigationService.makeactive("Product");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.template.type = 1;
+        $scope.pageName = "Create Product";
+        $scope.product = {};
+        $scope.sportList = {};
+
+        $scope.saveProduct = function() {
+            NavigationService.saveProduct($scope.product, function(data) {
+                if (data.status !== false) {
+                    $state.go('product');
+                }
+            });
+        };
+        $scope.addContent = function(select) {
+            $scope.sportList.tableContent = select.selected;
+        };
+    })
+    .controller('editProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("createproduct");
+        $scope.menutitle = NavigationService.makeactive("Product");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.template.type = 1;
+        $scope.pageName = "Edit Product";
+        $scope.product = {};
+        $scope.sportList = {};
+        $scope.getOneProduct = function() {
+            NavigationService.getOneProduct($stateParams.id, function(response) {
+                if (response.status) {
+                    $scope.product = data.response;
+                    $scope.product.status = $scope.product.status.toString();
+                }
+            });
+        };
+        $scope.getOneProduct();
+        $scope.saveProduct = function() {
+            NavigationService.saveProduct($scope.product, function(data) {
+                if (data.status !== false) {
+                    $state.go('product');
+                }
+            });
+        };
+        $scope.addContent = function(select) {
+            $scope.sportList.tableContent = select.selected;
+        };
+    })
+
 
     .controller('languageCtrl', function($scope, TemplateService, $translate, $rootScope) {
 

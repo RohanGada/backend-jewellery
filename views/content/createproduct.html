@@ -1,0 +1,66 @@
+<!-- <div class="breadcrumbs">
+  <ul>
+    <li>
+      <a title="Home">Company Setup</a>
+    </li>
+    <li>
+      <a ui-sref="branch-list" title="Branch List">Branch List</a>
+    </li>
+  </ul>
+</div> -->
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>Product</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <form ng-submit="saveProduct();">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="form-group">
+                            <label>Product Order</label>
+                            <input type="text" placeholder="Product Order" class="form-control" ng-model="product.order" only-digits>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Link</label>
+                            <input type="text" placeholder="Product Link" class="form-control" ng-model="product.link" >
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" ng-model="product.status">
+                                <!-- <option value=""></option> -->
+                                <option value="true">Enabled</option>
+                                <option value="false">Disabled</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <div class="product-img-holder" ng-if="product.image">
+                                <img ng-src="{{product.image|uploadpath}}" alt="" class="img-responsive margin-auto">
+                            </div>
+                            <upload-image ng-model="product.image" no-view></upload-image>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit">Save</button>
+                            <button class="btn btn-default" ui-sref="product">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
