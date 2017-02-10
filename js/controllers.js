@@ -120,15 +120,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getOneBanner = function() {
             NavigationService.getOneBanner($stateParams.id, function(response) {
                 if (response.status) {
-                    $scope.banner = data.response;
+                    $scope.banner = response.response;
                     $scope.banner.status = $scope.banner.status.toString();
+                }else{
+                  $scope.banner = {};
                 }
             });
         };
         $scope.getOneBanner();
         $scope.saveBanner = function() {
             NavigationService.saveBanner($scope.banner, function(data) {
-                if (data.status !== false) {
+                if (data.status) {
                     $state.go('banner');
                 }
             });
@@ -152,9 +154,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.pagination.pagenumber = 1;
 
         $scope.reload = function(val) {
+          $scope.products = undefined;
             NavigationService.getAllProducts(function(resp) {
                 if (resp.status) {
-                    $scope.contentLoaded = true;
                     $scope.products = resp.response;
                 } else {
                     $scope.products = [];
@@ -212,7 +214,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.getOneProduct = function() {
             NavigationService.getOneProduct($stateParams.id, function(response) {
                 if (response.status) {
-                    $scope.product = data.response;
+                    $scope.product = response.response;
                     $scope.product.status = $scope.product.status.toString();
                 }
             });

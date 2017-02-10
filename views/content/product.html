@@ -51,13 +51,13 @@
                                 <td style="width:30%">
                                     <input type="text" placeholder="Product Name" class="form-control" ng-model="pagination.name" ng-change="reload(2);">
                                 </td> -->
-                                <tr ng-if="products.length <= 0 && !contentLoaded" class="loadingTable">
+                                <!-- <tr ng-if="products.length <= 0 && !contentLoaded" class="loadingTable">
                                     <td>Loading...</td>
-                                </tr>
+                                </tr> -->
                                 <!-- <tr ng-if="products.length <= 0 && contentLoaded" class="loadingTable">
                                     <td >No Data Available</td>
                                 </tr> -->
-                                <tr ng-repeat="product in products" ng-if="products.length>0 && contentLoaded">
+                                <tr ng-repeat="product in products" ng-if="products.length>0">
                                     <td>{{$index+1}}</td>
                                     <td>{{product.order}}</td>
                                     <td>
@@ -89,8 +89,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-center" ng-if="products.length==0 && contentLoaded">
-                       <h5>No products found</h5>
+                    <div class="text-center" ng-if="!(products.length > 0)">
+                       <h5>{{products ==  undefined && 'Loading .. ' || 'No Products Found.'}}</h5>
                     </div>
                     <!-- <div class="">
                         <uib-pagination ng-show="products.data.length > 0" ng-change="reload();" total-items="products.total" ng-model="pagination.pagenumber" items-per-page="20"></uib-pagination>
