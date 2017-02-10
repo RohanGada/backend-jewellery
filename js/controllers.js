@@ -99,7 +99,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (data.status) {
                     $state.go('banner');
                 }else{
-                  
+
                 }
             });
         };
