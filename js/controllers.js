@@ -21,7 +21,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showError = false;
         $scope.loginAdmin = function() {
             NavigationService.loginAdmin($scope.login, function(data) {
-                console.log(data);
                 if (data.status === true) {
                     $scope.showError = false;
                     $.jStorage.set("user", data.response);
@@ -59,9 +58,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.pagination.pagenumber = 1;
 
         $scope.reload = function(val) {
+          $scope.banners = undefined;
             NavigationService.getAllBanners(function(resp) {
                 if (resp.status) {
-                    $scope.contentLoaded = true;
                     $scope.banners = resp.response;
                 } else {
                     $scope.banners = [];
@@ -72,7 +71,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.confDelete = function() {
             NavigationService.deleteBanner(function(data, status) {
-                console.log(data);
                 $scope.reload();
             });
         };
@@ -98,8 +96,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveBanner = function() {
             NavigationService.saveBanner($scope.banner, function(data) {
-                if (data.status !== false) {
+                if (data.status) {
                     $state.go('banner');
+                }else{
+                  
                 }
             });
         };
@@ -165,7 +165,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.confDelete = function() {
             NavigationService.deleteProduct(function(data, status) {
-                console.log(data);
                 $scope.reload();
             });
         };
@@ -235,7 +234,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('languageCtrl', function($scope, TemplateService, $translate, $rootScope) {
 
         $scope.changeLanguage = function() {
-            console.log("Language CLicked");
 
             if (!$.jStorage.get("language")) {
                 $translate.use("hi");
