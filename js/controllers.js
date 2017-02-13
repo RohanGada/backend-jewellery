@@ -47,7 +47,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('bannerCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("banner");
-        $scope.menutitle = NavigationService.makeactive("Schools");
+        $scope.menutitle = NavigationService.makeactive("Banner");
         TemplateService.title = $scope.menutitle;
         $scope.adminURL = adminURL;
         $scope.navigation = NavigationService.getnav();
@@ -143,7 +143,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('productCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("product");
-        $scope.menutitle = NavigationService.makeactive("Schools");
+        $scope.menutitle = NavigationService.makeactive("Products");
         TemplateService.title = $scope.menutitle;
         $scope.adminURL = adminURL;
         $scope.navigation = NavigationService.getnav();
@@ -182,7 +182,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('createProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("createproduct");
-        $scope.menutitle = NavigationService.makeactive("Product");
+        $scope.menutitle = NavigationService.makeactive("Products");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.template.type = 1;
@@ -204,7 +204,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('editProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("createproduct");
-        $scope.menutitle = NavigationService.makeactive("Product");
+        $scope.menutitle = NavigationService.makeactive("Products");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.template.type = 1;
