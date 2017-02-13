@@ -57,6 +57,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: formData
             }).success(callback);
         },
+        editBanner: function(formData, callback) {
+          console.log(formData);
+            $http({
+                url: adminURL + 'banner/editData',
+                method: 'POST',
+                data: formData
+            }).success(callback);
+        },
         getAllBanners: function( callback) {
             $http({
                 url: adminURL + 'banner/getall',
@@ -81,10 +89,10 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        saveProduct: function(formData, callback) {
+        editProduct: function(formData, callback) {
           console.log(formData);
             $http({
-                url: adminURL + 'product/saveData',
+                url: adminURL + 'product/editData',
                 method: 'POST',
                 data: formData
             }).success(callback);

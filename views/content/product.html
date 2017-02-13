@@ -38,8 +38,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Product Image</th>
                                     <th>Product Name</th>
+                                    <th>Product Image</th>
+                                    <th>Status</th>
                                     <th class="text-center" colspan="2">Operations</th>
                                 </tr>
                             </thead>
@@ -59,11 +60,11 @@
                                 </tr> -->
                                 <tr ng-repeat="product in products" ng-if="products.length>0">
                                     <td>{{$index+1}}</td>
-                                    <td>{{product.order}}</td>
+                                    <td>{{product.name}}</td>
                                     <td>
                                       <img style="width:150px;"ng-src="{{product.image | uploadpath}}" alt="">
                                     </td>
-                                    <td>{{product.link}}</td>
+                                    <td>{{product.status && 'Enabled' || 'Disabled'}}</td>
                                     <td class="text-center">
                                         <a ui-sref="editproduct({id:product._id})" class="btn btn-primary">
                                             <i class="fa fa-pencil-square-o"></i>

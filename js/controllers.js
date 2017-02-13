@@ -129,7 +129,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getOneBanner();
         $scope.saveBanner = function() {
-            NavigationService.saveBanner($scope.banner, function(data) {
+            NavigationService.editBanner($scope.banner, function(data) {
                 if (data.status) {
                     $state.go('banner');
                 }
@@ -221,7 +221,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.getOneProduct();
         $scope.saveProduct = function() {
-            NavigationService.saveProduct($scope.product, function(data) {
+            NavigationService.editProduct($scope.product, function(data) {
                 if (data.status !== false) {
                     $state.go('product');
                 }
