@@ -97,6 +97,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: formData
             }).success(callback);
         },
+        saveProduct: function(formData, callback) {
+          console.log(formData);
+            $http({
+                url: adminURL + 'product/saveData',
+                method: 'POST',
+                data: formData
+            }).success(callback);
+        },
         getAllProducts: function( callback) {
             $http({
                 url: adminURL + 'product/getall',
