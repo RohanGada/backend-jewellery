@@ -324,7 +324,8 @@ firstapp.directive('uploadImage', function($http, $filter) {
                                 $scope.model.push(data.data[0]);
                             }
                         } else {
-                            $scope.model = data.data[0];
+                            console.log("here is the error", data.response[0])
+                            $scope.model = data.response[0];
                         }
                         if($scope.state){
                           $scope.state.reload();
